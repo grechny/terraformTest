@@ -16,7 +16,7 @@ variable "scopes" {
 }
 
 variable "api_key" {
-  type = object
+  type = string
 }
 
 provider "google" {
