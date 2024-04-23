@@ -26,7 +26,7 @@ provider "google" {
 }
 
 # Create an Instance Template resource
-resource "google_compute_instance_template" "test_instance_template" {
+resource "google_compute_region_instance_template" "test_instance_template" {
   name         = "test-instance-template"
   machine_type = "e2-micro"  # Replace with desired machine type
 
