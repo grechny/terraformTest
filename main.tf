@@ -12,7 +12,7 @@ variable "zone" {
 }
 
 variable "scopes" {
-  type = string
+  type = set(string)
 }
 
 variable "api_key" {
