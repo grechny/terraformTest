@@ -44,9 +44,9 @@ resource "google_compute_instance_template" "test_instance_template" {
 }
 
 # Create a Managed Instance Group resource
-resource "google_compute_instance_group_manager" "manual_test" {
-  name                = "manual-test"
-  base_instance_name  = "manual-test"
+resource "google_compute_instance_group_manager" "terraform_test" {
+  name                = "terraform-test"
+  base_instance_name  = "terraform-test"
   instance_template   = google_compute_instance_template.test_instance_template.self_link
   zone                = var.zone
   target_size         = 1
