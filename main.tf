@@ -29,12 +29,10 @@ resource "google_compute_instance_template" "test_instance_template" {
     network = "default"
   }
 
-  # Replace placeholders below with actual values from your CLI example
-  boot {
-    initialize_params {
-      image = "projects/debian-cloud/global/images/debian-11"
-      disk_size_gb = 10
-    }
+  disk {
+    source_image      = "projects/cos-cloud/global/images/cos-109-17800-147-60"
+    auto_delete       = true
+    boot              = true
   }
 
   service_account {
@@ -47,14 +45,9 @@ resource "google_compute_instance_template" "test_instance_template" {
 resource "google_compute_instance_group_manager" "terraform_test" {
   name                = "terraform-test"
   base_instance_name  = "terraform-test"
-  instance_template   = google_compute_instance_template.test_instance_template.self_link
   zone                = var.zone
-  target_size         = 1
-
-  metadata = {
-    items = {
-      enable-vtpm = "true"
-      enable-integrity-monitoring = "true"
-    }
+  target_size         = 0
+  version {
+    instance_template   = google_compute_instance_template.test_instance_template.self_link
   }
 }
