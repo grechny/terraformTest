@@ -12,11 +12,15 @@ variable "zone" {
 }
 
 variable "scopes" {
-  type = list(string)
+  type = string
+}
+
+variable "api_key" {
+  type = object
 }
 
 provider "google" {
-  credentials = api_key
+  credentials = var.api_key
   project = var.project_id
   region  = var.region
 }
