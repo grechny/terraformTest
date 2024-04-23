@@ -20,11 +20,6 @@ provider "google" {
   region  = var.region
 }
 
-provider "google" {
-  project = var.project_id
-  region  = var.region
-}
-
 # Create an Instance Template resource
 resource "google_compute_instance_template" "test_instance_template" {
   name         = "test-instance-template"
