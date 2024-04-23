@@ -1,7 +1,15 @@
 # Terraform provider for Google Cloud Platform (GCP)
+variable "project_id" {
+  type = string
+}
+
+variable "region" {
+  type = string
+  description = "The region where you want to create the instance group"
+}
+
 provider "google" {
   project = var.project_id
-  # Replace with the region where you want to create the instance group (e.g., "europe-west1")
   region  = var.region
 }
 
