@@ -55,4 +55,19 @@ resource "google_compute_instance_group_manager" "terraform_test" {
   version {
     instance_template   = google_compute_instance_template.test_instance_template.self_link
   }
+
+  stateful-disk {
+    device_name = "terraform-test-disk"
+    delete_rule = "ON_PERMANENT_INSTANCE_DELETION"
+  }
+
+  stateful_internal_ip {
+    interface_name = "nic0"
+    delete_rule = "ON_PERMANENT_INSTANCE_DELETION"
+  }
+
+  stateful_external_ip {
+    interface_name = "nic0"
+    delete_rule = "ON_PERMANENT_INSTANCE_DELETION"
+  }
 }
