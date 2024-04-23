@@ -56,7 +56,7 @@ resource "google_compute_instance_group_manager" "terraform_test" {
     instance_template   = google_compute_instance_template.test_instance_template.self_link
   }
 
-  stateful-disk {
+  stateful_disk {
     device_name = "terraform-test-disk"
     delete_rule = "ON_PERMANENT_INSTANCE_DELETION"
   }
