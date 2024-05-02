@@ -1,1 +1,0 @@
-image = "projects/cos-cloud/global/images/cos-109-17800-147-60"

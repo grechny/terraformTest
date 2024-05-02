@@ -1,23 +1,3 @@
-variable "project_id" {
-  type = string
-}
-
-variable "region" {
-  type = string
-}
-
-variable "zone" {
-  type = string
-}
-
-variable "scopes" {
-  type = set(string)
-}
-
-variable "api_key" {
-  type = string
-}
-
 module "main" {
   source        = "./modules/generic"
 
@@ -28,5 +8,18 @@ module "main" {
   region        = var.region
   zone          = var.zone
   scopes        = var.scopes
-  api_key       = api_key
+  api_key       = var.api_key
+}
+
+module "slave" {
+  source        = "./modules/generic"
+
+  name          = "test-slave"
+  machineType   = "e2-standard"
+
+  project_id    = var.project_id
+  region        = var.region
+  zone          = var.zone
+  scopes        = var.scopes
+  api_key       = var.api_key
 }
