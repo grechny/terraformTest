@@ -26,7 +26,7 @@ resource "google_compute_instance_group_manager" "generic_instance_group" {
   zone                  = var.zone
   target_size           = 0
   version {
-    instance_template   = google_compute_region_instance_template.generic_instance_template.self_link
+    instance_template   = google_compute_region_instance_template.${var.name}-instanse-template.self_link
   }
 
   stateful_disk {
