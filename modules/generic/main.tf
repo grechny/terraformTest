@@ -18,7 +18,7 @@ resource "google_compute_region_instance_template" "generic_instance_template" {
     device_name         = "${var.name}-disk001"
     auto_delete         = false
     boot                = false
-    disk_type           = "pg-standard"
+    disk_type           = "pd-standard"
     disk_size_gb        = 10
   }
 
