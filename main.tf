@@ -10,16 +10,3 @@ module "main" {
   scopes        = var.scopes
   api_key       = var.api_key
 }
-
-module "slave" {
-  source        = "./modules/generic"
-
-  name          = "test-slave"
-  machineType   = "e2-standard"
-
-  project_id    = var.project_id
-  region        = var.region
-  zone          = var.zone
-  scopes        = var.scopes
-  api_key       = var.api_key
-}
