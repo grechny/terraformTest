@@ -13,6 +13,15 @@ resource "google_compute_region_instance_template" "generic_instance_template" {
     boot                = true
   }
 
+  disk {
+    source_image        = var.image
+    device_name         = "${var.name}-disk001"
+    auto_delete         = false
+    boot                = false
+    disk_type           = "pg-standard"
+    disk_size_gb        = 10
+  }
+
   service_account {
     email               = "831965780848-compute@developer.gserviceaccount.com"
     scopes              = var.scopes
@@ -26,11 +35,11 @@ resource "google_compute_instance_group_manager" "generic_instance_group" {
   zone                  = var.zone
   target_size           = 0
   version {
-    instance_template   = google_compute_region_instance_template.${var.name}-instanse-template.self_link
+    instance_template   = google_compute_region_instance_template.generic_instance_template.self_link
   }
 
   stateful_disk {
-    device_name = "${var.name}-disk"
+    device_name = "${var.name}-disk001"
     delete_rule = "ON_PERMANENT_INSTANCE_DELETION"
   }
 
