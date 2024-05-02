@@ -1,13 +1,13 @@
-module "webserver_group" {
+module "main" {
   source        = "./modules/generic"
 
   name          = "test-main"
-  machine_type  = "e2-micro"
+  machineType  = "e2-micro"
 }
 
-module "database_group" {
+module "slave" {
   source        = "./modules/generic"
 
   name          = "test-slave"
-  machine_type  = "e2-standard"
+  machineType  = "e2-standard"
 }
