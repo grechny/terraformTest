@@ -1,3 +1,11 @@
+variable "name" {
+  type = string
+}
+
+variable "machineType" {
+  type = string
+}
+
 module "main" {
   source        = "./modules/generic"
 
