@@ -15,7 +15,7 @@ module "slave" {
   source        = "./modules/generic"
 
   name          = "test-slave"
-  machineType   = "e2-standard"
+  machineType   = "e2-standard-2"
 
   project_id    = var.project_id
   region        = var.region
