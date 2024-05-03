@@ -38,7 +38,16 @@ resource "google_compute_region_instance_group_manager" "generic_instance_group"
   }
 
   update_policy {
-    instance_redistribution_type = "NONE"
+    type                           = "PROACTIVE"
+    instance_redistribution_type   = "NONE"
+    minimal_action                 = "REFRESH"
+    most_disruptive_allowed_action = "REPLACE"
+    replacement_method             = "RECREATE"
+    max_unavailable_fixed          = 3
+  }
+  update_policy {
+    type                          = "REFRESH"
+    instance_redistribution_type  = "NONE"
   }
 
   stateful_disk {
