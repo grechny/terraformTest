@@ -37,7 +37,12 @@ resource "google_compute_region_instance_group_manager" "generic_instance_group"
     instance_template   = google_compute_region_instance_template.generic_instance_template.self_link
   }
 
-  instance_redistribution_type = NONE
+  update_policy {
+    type                           = "OPPORTUNISTIC"
+    instance_redistribution_type   = "NONE"
+    minimal_action                 = "REFRESH"
+    most_disruptive_allowed_action = "REFRESH"
+  }
 
   stateful_disk {
     device_name = "${var.name}-disk001"
