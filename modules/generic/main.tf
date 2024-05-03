@@ -37,6 +37,8 @@ resource "google_compute_region_instance_group_manager" "generic_instance_group"
     instance_template   = google_compute_region_instance_template.generic_instance_template.self_link
   }
 
+  instance_redistribution_type = NONE
+
   stateful_disk {
     device_name = "${var.name}-disk001"
     delete_rule = "ON_PERMANENT_INSTANCE_DELETION"
