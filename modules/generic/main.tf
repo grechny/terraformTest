@@ -34,29 +34,20 @@ resource "google_compute_region_instance_group_manager" "generic_instance_group"
   base_instance_name    = var.name
 
   version {
-    instance_template   = google_compute_region_instance_template.generic_instance_template.self_link
+    instance_template  = google_compute_region_instance_template.generic_instance_template.self_link
   }
 
   update_policy {
-    type                           = "OPPORTUNISTIC"
-    instance_redistribution_type   = "NONE"
-    minimal_action                 = "REFRESH"
-    most_disruptive_allowed_action = "REFRESH"
-    max_unavailable_fixed          = 1
+    instance_redistribution_type = "NONE"
   }
 
   stateful_disk {
     device_name = "${var.name}-disk001"
-    delete_rule = "ON_PERMANENT_INSTANCE_DELETION"
+    delete_rule = "NEVER"
   }
 
   stateful_internal_ip {
     interface_name = "nic0"
-    delete_rule = "ON_PERMANENT_INSTANCE_DELETION"
-  }
-
-  stateful_external_ip {
-    interface_name = "nic0"
-    delete_rule = "ON_PERMANENT_INSTANCE_DELETION"
+    delete_rule = "NEVER"
   }
 }
