@@ -41,7 +41,7 @@ resource "google_compute_region_instance_group_manager" "generic_instance_group"
     type                           = "OPPORTUNISTIC"
     instance_redistribution_type   = "NONE"
     minimal_action                 = "REPLACE"
-    most_disruptive_allowed_action = "NONE"
+    most_disruptive_allowed_action = "REPLACE"
   }
 
   stateful_disk {
