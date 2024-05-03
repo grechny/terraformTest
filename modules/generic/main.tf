@@ -2,7 +2,7 @@
 resource "google_compute_region_instance_template" "generic_instance_template" {
   name                  = "${var.name}-instanse-template"
   machine_type          = var.machineType
-  tags                  = [ ${var.name} ]
+  tags                  = [ var.name ]
 
   network_interface {
     network = "default"
