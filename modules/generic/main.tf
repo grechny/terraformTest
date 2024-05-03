@@ -29,10 +29,10 @@ resource "google_compute_region_instance_template" "generic_instance_template" {
 }
 
 # Create a Managed Instance Group resource
-resource "google_compute_instance_group_manager" "generic_instance_group" {
+resource "google_compute_region_instance_group_manager" "generic_instance_group" {
   name                  = "${var.name}-instanse-group"
   base_instance_name    = var.name
-  zone                  = var.zone
+
   version {
     instance_template   = google_compute_region_instance_template.generic_instance_template.self_link
   }
