@@ -40,8 +40,8 @@ resource "google_compute_region_instance_group_manager" "generic_instance_group"
   update_policy {
     type                           = "OPPORTUNISTIC"
     instance_redistribution_type   = "NONE"
-    minimal_action                 = "REFRESH"
-    most_disruptive_allowed_action = "REFRESH"
+    minimal_action                 = "REPLACE"
+    most_disruptive_allowed_action = "NONE"
   }
 
   stateful_disk {
