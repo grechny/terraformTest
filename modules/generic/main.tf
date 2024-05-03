@@ -39,7 +39,7 @@ resource "google_compute_region_instance_group_manager" "generic_instance_group"
 
   all_instances_config {
     labels = {
-      label_key = "${var.project_id}-{var.name}"
+      label_key = "${var.project_id}-${var.name}"
     }
   }
 
