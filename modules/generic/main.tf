@@ -27,6 +27,10 @@ resource "google_compute_region_instance_template" "generic_instance_template" {
     email               = "831965780848-compute@developer.gserviceaccount.com"
     scopes              = var.scopes
   }
+
+  metadata = {
+    user-data = file("init-script.sh")
+  }
 }
 
 # Create a Managed Instance Group resource
