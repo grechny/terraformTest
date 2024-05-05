@@ -1,4 +1,4 @@
-resource "random_string" "random" {
+resource "random_string" "instance" {
   length  = 4
   special = false
 }

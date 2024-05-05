@@ -1,6 +1,6 @@
 # Create an Instance Template resource
 resource "google_compute_region_instance_template" "generic_instance_template" {
-  name                  = "${var.name}-instanse-template-${random_string.random}"
+  name                  = "${var.name}-instanse-template-${random_string.instance.id}"
   machine_type          = var.machineType
   tags                  = [ var.name ]
 
