@@ -1,6 +1,6 @@
 # Create an Instance Template resource
 resource "google_compute_region_instance_template" "generic_instance_template" {
-  name                  = "${var.name}-instanse-template-${random_string.instance.id}"
+  name_prefix           = "${var.name}-instanse-template-"
   machine_type          = var.machineType
   tags                  = [ var.name ]
 
@@ -39,7 +39,7 @@ resource "google_compute_region_instance_template" "generic_instance_template" {
 
 # Create a Managed Instance Group resource
 resource "google_compute_region_instance_group_manager" "generic_instance_group" {
-  name                  = "${var.name}-instanse-group"
+  name                  = "${var.name}-instanse-group-manager"
   base_instance_name    = var.name
 
   version {
@@ -63,5 +63,11 @@ resource "google_compute_region_instance_group_manager" "generic_instance_group"
   stateful_internal_ip {
     interface_name = "nic0"
     delete_rule = "NEVER"
+  }
+
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes = [
+    ]
   }
 }
