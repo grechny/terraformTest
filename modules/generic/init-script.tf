@@ -1,14 +1,6 @@
-resource "null_resource" "init_script" {
-
-  triggers = {
-    always = true
-  }
-
-  provisioner "local-exec" {
-    command = <<-EOF
-      base64encode $(templatefile("${path.module}/init-script.sh", {
-        name = var.name
-      })) > ${path.module}/init-script-modified.sh
-    EOF
-  }
+resource "local_file" "init_script" {
+  content  = templatefile("${path.module}/init-script.sh.tpl", {
+    NAME = var.name
+  })
+  filename = "${path.module}/init-script.sh"
 }

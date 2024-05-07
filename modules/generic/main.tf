@@ -29,7 +29,7 @@ resource "google_compute_region_instance_template" "generic_instance_template" {
   }
 
   metadata = {
-    user-data = file("${path.module}/init-script-modified.sh")
+    user-data = file("${path.module}/init-script.sh")
   }
 
   lifecycle {
