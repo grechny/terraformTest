@@ -1,4 +1,4 @@
-data "local_file" "init_script" {
+resource "local_file" "init_script" {
   content  = templatefile("${path.module}/init-script.sh.tpl", {
     NAME = var.name
   })
