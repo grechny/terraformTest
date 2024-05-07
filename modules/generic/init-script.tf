@@ -1,10 +1,5 @@
 resource "null_resource" "init_script" {
 
-  # Define your variable
-  variable "name" {
-    type = string
-  }
-
   triggers = {
     always = true
   }
@@ -13,7 +8,7 @@ resource "null_resource" "init_script" {
     command = <<-EOF
       base64encode $(templatefile("${path.module}/init-script.sh", {
         name = var.name
-      })) > init-script.sh
+      })) > init-script-modified.sh
     EOF
   }
 }
