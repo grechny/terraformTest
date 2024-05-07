@@ -8,7 +8,7 @@ resource "null_resource" "init_script" {
     command = <<-EOF
       base64encode $(templatefile("${path.module}/init-script.sh", {
         name = var.name
-      })) > init-script-modified.sh
+      })) > ${path.module}/init-script-modified.sh
     EOF
   }
 }
