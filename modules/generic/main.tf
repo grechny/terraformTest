@@ -68,6 +68,7 @@ resource "google_compute_region_instance_group_manager" "generic_instance_group"
   lifecycle {
     prevent_destroy = true
     ignore_changes = [
+      name
     ]
   }
 }
